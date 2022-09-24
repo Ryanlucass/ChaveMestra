@@ -15,7 +15,7 @@ Lucas Ryan:
   <a href="https://www.twitch.tv/calivem" target="_blank"><img src="https://img.shields.io/badge/Twitch-9146FF?style=for-the-badge&logo=twitch&logoColor=white" target="_blank"></a>
 </div>
 
-Vinícius Oliveira
+Vinícius Oliveira 
 ---  
 <div> 
   <a href="https://www.youtube.com/user/cursosemvideo" target="_blank"><img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" target="_blank"></a>
