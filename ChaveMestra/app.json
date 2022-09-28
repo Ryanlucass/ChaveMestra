@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "ChaveMestra",
+    "slug": "ChaveMestra",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
