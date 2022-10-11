@@ -1056,12 +1056,12 @@
 
 "@expo-google-fonts/roboto-condensed@^0.2.2":
   version "0.2.2"
-  resolved "https://registry.npmjs.org/@expo-google-fonts/roboto-condensed/-/roboto-condensed-0.2.2.tgz"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/roboto-condensed/-/roboto-condensed-0.2.2.tgz#b7d775e71c8982bb86042093dc71bd791d944755"
   integrity sha512-Bi+XYoNzueuhJdwXicmibiIfZRkf8nF8Pe2eYnrp84Mttodbf9Bpc0nIONXUSTmBitbuK2f/0cPk/8dy6z+xIQ==
 
 "@expo-google-fonts/roboto@^0.2.2":
   version "0.2.2"
-  resolved "https://registry.npmjs.org/@expo-google-fonts/roboto/-/roboto-0.2.2.tgz"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/roboto/-/roboto-0.2.2.tgz#0a9f4685e8d02bdb0d2d2919c102f531bdb353d4"
   integrity sha512-qP0oZsR8rTID5T9wEXSt9yCYMnKYKlvIlrJGGpd+t71Obt2J51+51PBpvxd5c8fpABEru3zx6ENmpU9lzwr8zw==
 
 "@expo/bunyan@4.0.0", "@expo/bunyan@^4.0.0":

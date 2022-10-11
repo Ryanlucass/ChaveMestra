@@ -7,6 +7,7 @@ import Estilo  from '../pages/Style'
 
 
 export default function Logo(){
+
     return(
     <View style={Estilo.container}>
         <View>

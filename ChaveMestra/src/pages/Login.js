@@ -1,7 +1,6 @@
 import React from 'react';
 import {SafeAreaView,Text, View, StyleSheet, Image, TextInput} from 'react-native';
 
-
 import Estilo  from './Style';
 import Logo from '../components/Logo';
 
