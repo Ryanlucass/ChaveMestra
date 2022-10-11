@@ -1,5 +1,5 @@
 {
-  "name": "chavemestra",
+  "name": "keymaster",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -9,12 +9,16 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "expo": "~46.0.9",
+    "@expo-google-fonts/roboto": "^0.2.2",
+    "@expo-google-fonts/roboto-condensed": "^0.2.2",
+    "expo": "~46.0.13",
+    "expo-app-loading": "~2.1.0",
+    "expo-font": "~10.2.0",
     "expo-splash-screen": "~0.16.2",
     "expo-status-bar": "~1.4.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",
-    "react-native": "0.69.5",
+    "react-native": "0.69.6",
     "react-native-web": "~0.18.7"
   },
   "devDependencies": {

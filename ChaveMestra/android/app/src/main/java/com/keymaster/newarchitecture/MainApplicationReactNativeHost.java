@@ -1,4 +1,4 @@
-package com.chavemestra.newarchitecture;
+package com.keymaster.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -20,9 +20,9 @@ import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.chavemestra.BuildConfig;
-import com.chavemestra.newarchitecture.components.MainComponentsRegistry;
-import com.chavemestra.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.keymaster.BuildConfig;
+import com.keymaster.newarchitecture.components.MainComponentsRegistry;
+import com.keymaster.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ChaveMestra",
-    "slug": "ChaveMestra",
+    "name": "KeyMaster",
+    "slug": "KeyMaster",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"

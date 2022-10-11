@@ -1,15 +1,17 @@
+import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StatusBar,StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-// imports
-import Login from './src/telas/Login';
+import Login from './src/pages/Login';
+import Registe from './src/pages/Register';
+import Logo from './src/components/Logo';
 
 export default function App() {
-  return (
-    <View >
-      <StatusBar/>
-      <Login/>
-    </View>
-  );
+    return (
+      <View>
+        <Login/>
+      </View>
+    );
 }
+
 
