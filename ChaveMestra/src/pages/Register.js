@@ -1,52 +1,68 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-SafeAreaView,
-Text, 
-View, 
-StyleSheet, 
-Image, 
-TextInput,
-Button, 
-Alert} from 'react-native';
+SafeAreaView, Text, View, StyleSheet, TextInput, Button, Alert } from 'react-native';
+import {TextInputMask} from 'react-native-masked-text'
 
 import Logo from '../components/Logo'
 import Estilos from '../pages/Style'
 
 export default function Register(){
+    //controlando estado
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [telefone, setTelefone] = useState('');
+
+
     return(
         <View style={style.body}>
             <Logo/>
 
-
-        <SafeAreaView style={style.Inputs}>
-            <Text style={Estilos.text_label}>Email</Text>
+        <SafeAreaView style={style.container}>
             <TextInput 
-            style={Estilos.inputs}
+            style={style.inputs}
+            onChangeText={setEmail}
+            keyboardType='email-address'
+            value={email}
             placeholder='Digite o email'
             />
+        
+            <TextInputMask
+            style={style.inputs}
+            type='cel-phone'
+            options={{
+                maskType :'BRL',
+                withDDD: true,
+                dddMask: '(85)'
+            }}
+            value={telefone}
+            onChangeText={text => setTelefone(text)}
+            placeholder = 'Digite o telefone'
+            />
 
-            <Text style={Estilos.text_label}>Senha</Text>
+
             <TextInput 
-            style={Estilos.inputs}
+            style={style.inputs}
+            onChangeText={setPassword}
+            value={password}
+            secureTextEntry={true}
             placeholder='Digite sua senha'
             />
 
-            <Text style={Estilos.text_label}>Digite o CPF</Text>
             <TextInput 
-            style={Estilos.inputs}
+            style={style.inputs}
+            onChangeText={setCpf}
+            keyboardType='numeric'
+            value={cpf}
             placeholder='Digite o CPF'
             />    
 
-            <Text style={Estilos.text_label}>Digite o Telefone</Text>
-            <TextInput 
-            style={Estilos.inputs}
-            placeholder='Digite o telefone'
-            />
         </SafeAreaView>
 
         <View style={style.buttonLogin}>
                     <Button
-                    title='Entrar'
+                    title='Cadastrar'
                     color='#000'
                     onPress={()=> Alert.alert('Deixa de ser otário')}
                     />
@@ -64,8 +80,16 @@ const style = StyleSheet.create({
         alignItems:'center',
         justifyContent:'flex-start'
     },
-    Inputs:{
-        margin: -130
+    container:{
+        margin: -130    
+    },
+    inputs:{
+        height: 33,
+        width:230,
+        margin: 8,
+        backgroundColor:'white',
+        padding: 5,
+        borderRadius: 6
     },
     buttonLogin:{
         width: 100,

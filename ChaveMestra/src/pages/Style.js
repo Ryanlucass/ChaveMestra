@@ -19,7 +19,7 @@ export default StyleSheet.create({
         width:230,
         margin: 12,
         backgroundColor:'white',
-        padding: 10,
+        padding: 5,
         borderRadius: 6
     },
     text_label:{
