@@ -1,5 +1,4 @@
 import {StyleSheet} from 'react-native';
-import { useFonts } from 'expo-font';
 
 export default StyleSheet.create({
     
@@ -13,7 +12,7 @@ export default StyleSheet.create({
     container:{
         flexDirection:'row',
         alignItems:'center',
-        margin:120
+        margin:120,
     },
     inputs:{
         height: 33,

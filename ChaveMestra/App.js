@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Alert} from 'react-native';
 import { 
   useFonts, 
   Roboto_700Bold, 
@@ -14,6 +14,8 @@ import {
 
 import React from 'react';
 import Register from './src/pages/Register';
+import Login from './src/pages/Login';
+import Button  from './src/components/Button';
 
 export default function App() {
   const[fonteCarregada] = useFonts({
@@ -27,9 +29,11 @@ if(!fonteCarregada){
   return  <View/> 
 }
 
+
+
 return (
       <View>
-        <Register/>
+       <Register/>
       </View>
     );
 }

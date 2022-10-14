@@ -1,5 +1,13 @@
 import React from 'react';
-import {SafeAreaView,Text, View, StyleSheet, Image, TextInput} from 'react-native';
+import {
+SafeAreaView,
+Text, 
+View, 
+StyleSheet, 
+Image, 
+TextInput,
+Button, 
+Alert} from 'react-native';
 
 import Logo from '../components/Logo'
 import Estilos from '../pages/Style'
@@ -34,9 +42,16 @@ export default function Register(){
             style={Estilos.inputs}
             placeholder='Digite o telefone'
             />
-
-
         </SafeAreaView>
+
+        <View style={style.buttonLogin}>
+                    <Button
+                    title='Entrar'
+                    color='#000'
+                    onPress={()=> Alert.alert('Deixa de ser otário')}
+                    />
+            </View>
+
         </View>
     );
 }
@@ -50,6 +65,11 @@ const style = StyleSheet.create({
         justifyContent:'flex-start'
     },
     Inputs:{
-        margin: -100
+        margin: -130
+    },
+    buttonLogin:{
+        width: 100,
+        justifyContent:'center',
+        margin: 140
     }
 })

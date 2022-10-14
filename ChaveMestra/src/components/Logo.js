@@ -13,7 +13,7 @@ export default function Logo(){
         <View>
             <Text style={Estilo.logo_01}>CHAVE</Text>
             <Text style={Estilo.logo_02}>SERVIÇOS GERAIS</Text>
-            <Text style={Estilo.logo_03}>MESTRA</Text>
+            <Text style={Estilo.logo_03}>MESTRA</Text> 
         </View>
 
         <View style={Estilo.log_img}>
