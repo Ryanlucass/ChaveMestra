@@ -1,16 +1,10 @@
 import React from 'react';
-import {
-    SafeAreaView,
-    Text, 
-    Button,
-    View, 
-    StyleSheet, 
-    TextInput,
-    Alert 
-} from 'react-native';
+import { SafeAreaView, Text, Button, View, StyleSheet, TextInput, Alert, TouchableOpacity }
+from 'react-native';
 
 import Estilo  from './Style';
 import Logo from '../components/Logo';
+import Botao from '../components/Botao';
 
 
 
@@ -20,40 +14,30 @@ export default function Login(){
             <Logo/>
 
             <SafeAreaView style={style.textLogin}>
-                <Text style={Estilo.text_label}>Email</Text>
                 <TextInput 
                 style={Estilo.inputs}
-                placeholder='Digite seu email'
+                placeholder='  Digite seu e-mail'
                 />
 
-                <Text style={Estilo.text_label}> Senha</Text>
-                <TextInput todo
+                <TextInput 
                 style={Estilo.inputs}
-                placeholder='Digite sua senha'
+                placeholder='  Digite sua senha'
                 />  
 
             </SafeAreaView>
 
-            <View style={style.buttonLogin}>
-                    <Button
-                    title='Entrar'
-                    color='#000'
-                    onPress={()=> Alert.alert('Deixa de ser otário')}
-                    />
-            </View>
+            <Botao 
+            texto={'Entrar'}
+            largura={160                    } 
+            />
 
         </View>
     )
 }
 
-
 const style = StyleSheet.create({
     textLogin:{
         marginTop: -80
-    },
-    buttonLogin:{
-        width: 100,
-        margin: 22,
     }
 })
 

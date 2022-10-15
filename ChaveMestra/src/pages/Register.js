@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import {
-SafeAreaView, Text, View, StyleSheet, TextInput, Button, Alert } from 'react-native';
+import { SafeAreaView, Text, View, StyleSheet, TextInput, Button, Alert } from 'react-native';
 import {TextInputMask} from 'react-native-masked-text'
 
 import Logo from '../components/Logo'
 import Estilos from '../pages/Style'
+import Botao from '../components/Botao';
 
 export default function Register(){
     //controlando estado
@@ -60,13 +60,24 @@ export default function Register(){
 
         </SafeAreaView>
 
-        <View style={style.buttonLogin}>
-                    <Button
-                    title='Cadastrar'
-                    color='#000'
-                    onPress={()=> Alert.alert('Deixa de ser otário')}
-                    />
-            </View>
+        <View style={style.botaGoogle}>
+            <Botao
+            texto={'Continue with google'}
+            largura={230}
+            corBotao={'white'}
+            corTexto={'Black'}
+            />
+        </View>    
+
+        <View style={style.botao}>
+            <Botao
+            texto={'Cadastrar'}
+            largura={230}
+            corBotao={'black'}
+            corTexto={'white'}
+            />
+        </View>
+
 
         </View>
     );
@@ -89,11 +100,14 @@ const style = StyleSheet.create({
         margin: 8,
         backgroundColor:'white',
         padding: 5,
-        borderRadius: 6
+        borderRadius: 6,
+        fontFamily:'RobotoRegular'
     },
-    buttonLogin:{
-        width: 100,
-        justifyContent:'center',
-        margin: 140
+    botao:{
+        margin:-120,
+    },
+    botaGoogle:{
+        margin:110,
+        marginTop:120
     }
 })

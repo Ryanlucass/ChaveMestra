@@ -17,14 +17,15 @@ export default StyleSheet.create({
     inputs:{
         height: 33,
         width:230,
-        margin: 12,
-        backgroundColor:'white',
+        margin: 5,
         padding: 5,
-        borderRadius: 6
+        borderRadius: 6,
+        backgroundColor:'white',
+        fontFamily:'RobotoRegular'    
     },
     text_label:{
         marginLeft: 9,
-        fontFamily:'RobotoCondensedReulgar',
+        fontFamily:'RobotoCondensedRegular',
         fontSize: 15
     },
     log_img:{
@@ -36,7 +37,7 @@ export default StyleSheet.create({
         fontSize:25
     },
     logo_02:{
-        fontFamily: "RobotoCondensedReulgar", 
+        fontFamily: "RobotoCondensedRegular", 
         fontSize:15
     },
     logo_03:{
