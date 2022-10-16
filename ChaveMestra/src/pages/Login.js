@@ -28,7 +28,9 @@ export default function Login(){
 
             <Botao 
             texto={'Entrar'}
-            largura={160                    } 
+            largura={160} 
+            corBotao={'black'}
+            corTexto={'white'}
             />
 
         </View>

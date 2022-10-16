@@ -24,7 +24,7 @@ if(!fonteCarregada){
 }
 
 return (
-    <Register/>
+    <Login/>
     )
 }
 
