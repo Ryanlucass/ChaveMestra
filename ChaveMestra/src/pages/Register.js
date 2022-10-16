@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { SafeAreaView, Text, View, StyleSheet, TextInput, Button, Alert } from 'react-native';
+import { SafeAreaView, Text, View, StyleSheet, TextInput, Button, Alert, Image} from 'react-native';
 import {TextInputMask} from 'react-native-masked-text'
 
 import Logo from '../components/Logo'
 import Estilos from '../pages/Style'
 import Botao from '../components/Botao';
+import LogoGoogle from '../../assets/googleLogo.png'
 
 export default function Register(){
     //controlando estado
@@ -63,18 +64,30 @@ export default function Register(){
         <View style={style.botaGoogle}>
             <Botao
             texto={'Continue with google'}
+            img={true}
             largura={230}
             corBotao={'white'}
             corTexto={'Black'}
             />
         </View>    
 
-        <View style={style.botao}>
+        <View style={{
+            margin:-120
+        }}>
             <Botao
             texto={'Cadastrar'}
             largura={230}
             corBotao={'black'}
             corTexto={'white'}
+            />
+        </View>
+
+        <View style={{
+            margin:120,
+            marginTop:110
+        }}>
+            <Botao
+            texto={'Já possui cadastro ? login'}
             />
         </View>
 
@@ -92,7 +105,7 @@ const style = StyleSheet.create({
         justifyContent:'flex-start'
     },
     container:{
-        margin: -130    
+        margin: -120
     },
     inputs:{
         height: 33,
@@ -103,11 +116,13 @@ const style = StyleSheet.create({
         borderRadius: 6,
         fontFamily:'RobotoRegular'
     },
-    botao:{
-        margin:-120,
-    },
     botaGoogle:{
-        margin:110,
-        marginTop:120
+        margin:114,
+        marginTop:109
+    },
+    logoGoogle:{
+        margin: 60,
+        width:100,
+        height:100
     }
 })
