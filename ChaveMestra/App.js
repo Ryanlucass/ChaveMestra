@@ -7,25 +7,22 @@ import {   RobotoCondensed_400Regular } from '@expo-google-fonts/roboto-condense
 
 
 // Pages
-import Register from './src/pages/Register';
-import Login from './src/pages/Login'; 
+import {Routes} from './src/routes';
 
 // Carregando fontes
 export default function App() {
-  const[fonteCarregada] = useFonts({
+  const[fontsLoaded] = useFonts({
     "RobotoBold": Roboto_700Bold,
     "RobotoBoldItalic" : Roboto_700Bold_Italic,
     "RobotoCondensedRegular":RobotoCondensed_400Regular,
     'RobotoRegular':RobotoCondensed_400Regular
 });
+  if(!fontsLoaded){
+    return  <View/> 
+  }
 
-if(!fonteCarregada){
-  return  <View/> 
+  return (
+      <Routes/>
+      )
+
 }
-
-return (
-    <Login/>
-    )
-}
-
-

@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
 import { SafeAreaView, Text, View, StyleSheet, TextInput, Button, Alert, Image} from 'react-native';
 import {TextInputMask} from 'react-native-masked-text'
+import {useNavigation} from '@react-navigation/native'
 
 import Logo from '../components/Logo'
-import Estilos from '../pages/Style'
 import Botao from '../components/Botao';
-import LogoGoogle from '../../assets/googleLogo.png'
 
 export default function Register(){
     //controlando estado
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [username, setUsername] = useState('');
     const [cpf, setCpf] = useState('');
     const [telefone, setTelefone] = useState('');
 
+    const navigation = useNavigation();
+
+    //decorrência do click
+    function handleNewOrder(){
+        navigation.navigate('Login');
+    }
 
     return(
         <View style={style.body}>
@@ -88,6 +92,7 @@ export default function Register(){
         }}>
             <Botao
             texto={'Já possui cadastro ? login'}
+            onPress={handleNewOrder}
             />
         </View>
 

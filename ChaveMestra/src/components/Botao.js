@@ -5,10 +5,12 @@ from 'react-native';
 import LogoGoogle from './LogoGoogle'
 
 
-export default function Botao({texto,largura,corBotao,corTexto,img}){
+export default function Botao({texto,largura,corBotao,corTexto,img,onPress}){
     if(img === true){
         return(
-            <TouchableOpacity style={{
+            <TouchableOpacity 
+            onPress={onPress}
+            style={{
                 marginTop: 16,
                 backgroundColor: corBotao,
                 borderRadius: 5,
@@ -29,7 +31,9 @@ export default function Botao({texto,largura,corBotao,corTexto,img}){
     }
     else{
         return(
-            <TouchableOpacity style={{
+            <TouchableOpacity 
+            onPress={onPress}
+            style={{
                 marginTop: 16,
                 backgroundColor: corBotao,
                 borderRadius: 5,

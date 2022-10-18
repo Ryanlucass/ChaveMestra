@@ -6,8 +6,6 @@ import Estilo  from './Style';
 import Logo from '../components/Logo';
 import Botao from '../components/Botao';
 
-
-
 export default function Login(){
     return(
         <View style={Estilo.body}>
@@ -32,7 +30,6 @@ export default function Login(){
             corBotao={'black'}
             corTexto={'white'}
             />
-
         </View>
     )
 }
