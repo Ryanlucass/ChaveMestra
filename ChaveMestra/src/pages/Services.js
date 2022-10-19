@@ -1,7 +1,10 @@
 import React from "react";
-import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
+import {Text, View, TouchableOpacity, StyleSheet,Image} from 'react-native';
 
 import Logo from '../components/Logo'
+
+// icon
+import { AntDesign, FontAwesome5, MaterialCommunityIcons} from '@expo/vector-icons'; 
 
 
 export default function Services(){
@@ -21,19 +24,37 @@ export default function Services(){
             <View style={{
                 margin:-30
             }}>
+
                 <TouchableOpacity
                 style={styles.services}>
-                    <Text style={styles.title_botton}>Carros</Text>
+                    <Text style={{
+                        display:'flex'
+                    }}>
+                            <AntDesign 
+                            name="car" size={44} 
+                            color="white"/>
+                    </Text>
+                    <Text style={styles.title_botton}> Carros</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                 style={styles.services}>
-                    <Text style={styles.title_botton}>Bikes</Text>
+                    <Text style={styles.title_botton}>
+                        <MaterialCommunityIcons 
+                        name="bike" 
+                        size={44} 
+                        color="white"/> Bikes
+                        </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                 style={styles.services}>
-                    <Text style={styles.title_botton}>Motos</Text>
+                    <Text style={styles.title_botton}>
+                    <FontAwesome5 
+                        name="motorcycle" 
+                        size={44} 
+                        color="white"
+                        /> Motos</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -48,11 +69,13 @@ const styles =  StyleSheet.create({
         paddingVertical: 40,
         width: 360,
         alignItems:'center',
-        justifyContent:'center'
+        flexDirection:'row',
+        justifyContent:'center',
+        padding:44
     },
     title_botton:{
         color:'#FFF',
         fontSize:37,
-        fontWeight: '700',
+        fontWeight: '700'
     }
 })
