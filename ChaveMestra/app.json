@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "KeyMaster",
+    "slug": "KeyMaster",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
