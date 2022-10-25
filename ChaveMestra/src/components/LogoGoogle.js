@@ -1,7 +1,7 @@
 import react from "react";
 import {SafeAreaView,Text, View, StyleSheet, Image, TextInput} from 'react-native';
 
-import googleLogo from '../../assets/googleLogo.png'
+import googleLogo from '../../Assets/googleLogo.png'
 
 export default function GoogleLogo(){
     return(

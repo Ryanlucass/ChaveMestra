@@ -2,7 +2,7 @@ import React from 'react';
 import {SafeAreaView,Text, View, StyleSheet, Image, TextInput} from 'react-native';
 
 
-import Engrenagem from './../../assets/egrenagem.png';
+import Engrenagem from './../../Assets/egrenagem.png';
 import Estilo  from '../pages/Style'
 
 
