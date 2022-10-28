@@ -1,4 +1,4 @@
-package com.keymaster.newarchitecture.modules;
+package com.chavemestra.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

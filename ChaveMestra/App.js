@@ -7,7 +7,7 @@ import {   RobotoCondensed_400Regular } from '@expo-google-fonts/roboto-condense
 
 
 // Pages
-import {Routes} from './src/routes';
+import Routes from './src/routes';
 
 // Carregando fontes
 export default function App() {

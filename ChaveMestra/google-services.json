@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "458516419713",
+    "project_id": "chavemestra-f6e9d",
+    "storage_bucket": "chavemestra-f6e9d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:458516419713:android:b244a7f84b09388fbf6980",
+        "android_client_info": {
+          "package_name": "com.chavemestra"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "458516419713-7uja23cloun54m8nhm2nbgf1edfib3k1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGEfgfYFg44WW9zQQtO4VqS60ejb515yg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "458516419713-7uja23cloun54m8nhm2nbgf1edfib3k1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "458516419713-883khs9ooqtq88dcslsar3grr9f6dk0r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.chavemestra"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

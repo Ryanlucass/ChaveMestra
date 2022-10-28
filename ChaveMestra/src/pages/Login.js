@@ -1,14 +1,41 @@
 import React, { useState } from 'react';
 import { SafeAreaView, Text, Button, View, StyleSheet, TextInput, Alert, TouchableOpacity}
 from 'react-native';
+import auth from '@react-native-firebase/auth'
 
 import Estilo  from './Style';
 import Logo from '../components/Logo';
 import Botao from '../components/Botao';
 
 export default function Login(){
+
     function handlesing(){
-        Alert.alert("Deu certo o botão");
+        if(!email || !password){
+            return Alert.alert("Email ou senhas inválidos");
+        }
+        
+        auth()
+        .signInWithEmailAndPassword(email, password)
+        .catch((error)=> {
+            
+            switch(error.code){
+                case 'auth/invalid-email':
+                return  Alert.alert('E-mail inválido');
+                break;
+
+                case 'auth/wrong-password':
+                return  Alert.alert('senha inválida');
+                break;
+
+                case 'auth/user-not-found':
+                return  Alert.alert('Usuário não econtrado ou não existe');
+                break;
+            }
+
+            return Alert.alert('Não foi possível acessar');
+                
+        });
+
     }
 
     const [email, setEmail] = useState('');
@@ -24,13 +51,14 @@ export default function Login(){
                 <TextInput 
                 style={Estilo.inputs}
                 placeholder='  Digite seu e-mail'
-                onChange={setEmail}
+                onChangeText={setEmail}
                 />
 
                 <TextInput 
                 style={Estilo.inputs}
                 placeholder='  Digite sua senha'
-                onChange={setPassword}
+                secureTextEntry={true}
+                onChangeText={setPassword}
                 />  
 
             </SafeAreaView>

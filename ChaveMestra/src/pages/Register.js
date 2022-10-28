@@ -15,7 +15,7 @@ export default function Register(){
 
     const navigation = useNavigation();
 
-    //decorrência do click
+    //decorrência do clickr
     function handleNewOrder(){
         navigation.navigate('Login');
     }

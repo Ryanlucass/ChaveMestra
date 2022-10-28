@@ -4,7 +4,7 @@ import {Text, View, TouchableOpacity, StyleSheet,Image} from 'react-native';
 import Logo from '../components/Logo'
 
 // icon
-import { AntDesign, FontAwesome5, MaterialCommunityIcons} from '@expo/vector-icons'; 
+import { AntDesign, Entypo, FontAwesome, FontAwesome5, MaterialCommunityIcons} from '@expo/vector-icons'; 
 
 
 export default function Services(){
@@ -30,31 +30,41 @@ export default function Services(){
                     <Text style={{
                         display:'flex'
                     }}>
-                            <AntDesign 
-                            name="car" size={44} 
+                            <FontAwesome5 
+                            name="oil-can" size={25} 
                             color="white"/>
                     </Text>
-                    <Text style={styles.title_botton}> Carros</Text>
+                    <Text style={styles.title_botton}> TROCA DE ÓLEO</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                 style={styles.services}>
                     <Text style={styles.title_botton}>
                         <MaterialCommunityIcons 
-                        name="bike" 
-                        size={44} 
-                        color="white"/> Bikes
+                        name="tire" 
+                        size={25} 
+                        color="white"/> ALINHAMENTO
                         </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                 style={styles.services}>
                     <Text style={styles.title_botton}>
-                    <FontAwesome5 
-                        name="motorcycle" 
-                        size={44} 
+                    <FontAwesome 
+                        name="car" 
+                        size={25} 
                         color="white"
-                        /> Motos</Text>
+                        /> FUNILARIA</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                style={styles.services}>
+                    <Text style={styles.title_botton}>
+                    <Entypo 
+                        name="sound" 
+                        size={25} 
+                        color="white"
+                        /> SOM</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -66,7 +76,7 @@ const styles =  StyleSheet.create({
         margin:4,  
         backgroundColor:'#023047',
         borderRadius: 5,
-        paddingVertical: 40,
+        paddingVertical: 30,
         width: 360,
         alignItems:'center',
         flexDirection:'row',
@@ -75,7 +85,7 @@ const styles =  StyleSheet.create({
     },
     title_botton:{
         color:'#FFF',
-        fontSize:37,
+        fontSize:25,
         fontWeight: '700'
     }
 })
