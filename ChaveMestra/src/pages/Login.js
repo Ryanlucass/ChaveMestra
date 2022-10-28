@@ -11,7 +11,7 @@ export default function Login(){
 
     function handlesing(){
         if(!email || !password){
-            return Alert.alert("Email ou senhas inválidos");
+            return Alert.alert("Email ou senhas vazios");
         }
         
         auth()

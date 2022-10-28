@@ -37,7 +37,7 @@ export default function Veiculos(){
             justifyContent:'flex-start'
         }}>
         <View style={{
-            margin:-60
+            margin:-80
         }}>
             <Logo/>
         </View>
@@ -52,7 +52,7 @@ export default function Veiculos(){
                         display:'flex'
                     }}>
                             <AntDesign 
-                            name="car" size={44} 
+                            name="car" size={25} 
                             color="white"/>
                     </Text>
                     <Text style={styles.title_botton}> Carros</Text>
@@ -61,11 +61,22 @@ export default function Veiculos(){
                 <TouchableOpacity
                 onPress={handleServices}
                 style={styles.services}>
-                    <Text style={styles.title_botton}> 
-                        <MaterialCommunityIcons 
-                        name="bike" 
-                        size={44} 
-                        color="white"/> Bikes
+                    <Text style={styles.title_botton}>
+                    <FontAwesome5 
+                        name="truck" 
+                        size={25} 
+                        color="white"
+                        /> Caminhões</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                onPress={handleServices}
+                style={styles.services}>
+                    <Text style={styles.title_botton}>
+                        <FontAwesome5 
+                        name="bus-alt" 
+                        size={25} 
+                        color="white"/> Ônibus
                         </Text>
                 </TouchableOpacity>
 
@@ -75,7 +86,7 @@ export default function Veiculos(){
                     <Text style={styles.title_botton}>
                     <FontAwesome5 
                         name="motorcycle" 
-                        size={44} 
+                        size={25} 
                         color="white"
                         /> Motos</Text>
                 </TouchableOpacity>
@@ -113,7 +124,7 @@ const styles =  StyleSheet.create({
     },
     title_botton:{
         color:'#FFF',
-        fontSize:37,
+        fontSize:25,
         fontWeight: '700'
     }
 })

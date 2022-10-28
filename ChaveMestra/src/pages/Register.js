@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { SafeAreaView, Text, View, StyleSheet, TextInput, Button, Alert, Image} from 'react-native';
 import {TextInputMask} from 'react-native-masked-text'
 import {useNavigation} from '@react-navigation/native'
+import auth from '@react-native-firebase/auth'
+
 
 import Logo from '../components/Logo'
 import Botao from '../components/Botao';
@@ -10,8 +12,7 @@ export default function Register(){
     //controlando estado
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [cpf, setCpf] = useState('');
-    const [telefone, setTelefone] = useState('');
+
 
     const navigation = useNavigation();
 
@@ -19,6 +20,42 @@ export default function Register(){
     function handleNewOrder(){
         navigation.navigate('Login');
     }
+
+    function validarEmail(email){
+        
+        console.log(email);
+        const regex =(/\S+@\S+\.\S+/);
+        console.log(regex.test(email)) 
+        
+    }
+
+
+    function handleRegister(){
+        if(!email || !password){
+            return Alert.alert("Email ou senhas vazios");
+        }
+
+        auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then((Response =>{
+            navigation.navigate('Login')
+        }))
+        .catch((error => {
+            switch(error.code){
+                case 'auth/invalid-email':
+                return  Alert.alert('E-mail inválido');
+                break;
+    
+                case 'auth/email-already-in-use':
+                return  Alert.alert('usuário já cadastrado');
+                break;
+            }
+        }))
+
+
+
+    }
+
 
     return(
         <View style={style.body}>
@@ -29,39 +66,16 @@ export default function Register(){
             style={style.inputs}
             onChangeText={setEmail}
             keyboardType='email-address'
-            value={email}
             placeholder='Digite o email'
             />
         
-            <TextInputMask
-            style={style.inputs}
-            type='cel-phone'
-            options={{
-                maskType :'BRL',
-                withDDD: true,
-                dddMask: '(85)'
-            }}
-            value={telefone}
-            onChangeText={text => setTelefone(text)}
-            placeholder = 'Digite o telefone'
-            />
-
 
             <TextInput 
             style={style.inputs}
             onChangeText={setPassword}
-            value={password}
             secureTextEntry={true}
             placeholder='Digite sua senha'
             />
-
-            <TextInput 
-            style={style.inputs}
-            onChangeText={setCpf}
-            keyboardType='numeric'
-            value={cpf}
-            placeholder='Digite o CPF'
-            />    
 
         </SafeAreaView>
 
@@ -83,6 +97,7 @@ export default function Register(){
             largura={230}
             corBotao={'black'}
             corTexto={'white'}
+            onPress={handleRegister}
             />
         </View>
 
