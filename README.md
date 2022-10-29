@@ -1,6 +1,6 @@
 <h1 align='center'>Chave Mestra ⚙️ </h1>
 
-![](./ChaveMestra/Assets/capaChaveMestra.png)
+![](./capaChaveMestra.png)
 
 
 
