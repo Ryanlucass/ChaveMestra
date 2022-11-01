@@ -2,13 +2,32 @@ import React, { useState } from 'react';
 import { SafeAreaView, Text, View, StyleSheet, TextInput, Button, Alert, Image} from 'react-native';
 import {TextInputMask} from 'react-native-masked-text'
 import {useNavigation} from '@react-navigation/native'
-import auth from '@react-native-firebase/auth'
 
+import auth from '@react-native-firebase/auth'
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 import Logo from '../components/Logo'
 import Botao from '../components/Botao';
 
 export default function Register(){
+
+    GoogleSignin.configure({
+        webClientId: '458516419713-7uja23cloun54m8nhm2nbgf1edfib3k1.apps.googleusercontent.com',
+    });
+    
+    async function onGoogleButtonPress() {
+            // Check if your device supports Google Play
+            await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+            // Get the users ID token
+            const { idToken } = await GoogleSignin.signIn();
+        
+            // Create a Google credential with the token
+            const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+        
+            // Sign-in the user with the credential
+            return auth().signInWithCredential(googleCredential);
+    }
+
     //controlando estado
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -85,7 +104,8 @@ export default function Register(){
             img={true}
             largura={230}
             corBotao={'white'}
-            corTexto={'Black'}
+            corTexto={'black'}
+            onPress={onGoogleButtonPress}
             />
         </View>    
 
@@ -106,7 +126,7 @@ export default function Register(){
             marginTop:110
         }}>
             <Botao
-            texto={'Já possui cadastro ? login'}
+            texto={'Já possui cadastro ? Clique aqui para logar'}
             onPress={handleNewOrder}
             />
         </View>

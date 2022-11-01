@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SafeAreaView, Text, Button, View, StyleSheet, TextInput, Alert, TouchableOpacity}
 from 'react-native';
+
 import auth from '@react-native-firebase/auth'
 
 import Estilo  from './Style';
@@ -20,11 +21,11 @@ export default function Login(){
             
             switch(error.code){
                 case 'auth/invalid-email':
-                return  Alert.alert('E-mail inválido');
+                return  Alert.alert('Email inválido');
                 break;
 
                 case 'auth/wrong-password':
-                return  Alert.alert('senha inválida');
+                return  Alert.alert('Senha inválida');
                 break;
 
                 case 'auth/user-not-found':
@@ -50,7 +51,7 @@ export default function Login(){
             <SafeAreaView style={style.textLogin}>
                 <TextInput 
                 style={Estilo.inputs}
-                placeholder='  Digite seu e-mail'
+                placeholder='  Digite seu email'
                 onChangeText={setEmail}
                 />
 
@@ -61,7 +62,7 @@ export default function Login(){
                 onChangeText={setPassword}
                 />  
 
-            </SafeAreaView>
+            </SafeAreaView>  
 
             <Botao 
             texto={'Entrar'}
@@ -79,4 +80,3 @@ const style = StyleSheet.create({
         marginTop: -80
     }
 })
-

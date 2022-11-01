@@ -115,7 +115,7 @@ const styles =  StyleSheet.create({
         margin:4,  
         backgroundColor:'#023047',
         borderRadius: 5,
-        paddingVertical: 40,
+        paddingVertical: 30,
         width: 360,
         alignItems:'center',
         flexDirection:'row',
