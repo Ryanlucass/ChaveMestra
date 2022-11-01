@@ -1,3 +1,6 @@
 <resources>
   <string name="app_name">KeyMaster</string>
+  <string name="facebook_app_id">491948806330643</string>
+  <string name="fb_login_protocol_scheme">491948806330643</string>
+  <string name="facebook_client_token">53471813aaa4cd4982e39b620c4d1128</string>
 </resources>

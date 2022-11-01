@@ -5,6 +5,7 @@ import {useNavigation} from '@react-navigation/native'
 
 import auth from '@react-native-firebase/auth'
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 
 import Logo from '../components/Logo'
 import Botao from '../components/Botao';
@@ -29,6 +30,28 @@ export default function Register(){
             return auth().signInWithCredential(googleCredential);
     }
 
+    async function onFacebookButtonPress() {
+        // Attempt login with permissions
+        const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+
+        if (result.isCancelled) {
+            throw 'User cancelled the login process';
+        }
+
+        // Once signed in, get the users AccesToken
+        const data = await AccessToken.getCurrentAccessToken();
+
+        if (!data) {
+            throw 'Something went wrong obtaining access token';
+        }
+
+        // Create a Firebase credential with the AccessToken
+        const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
+
+        // Sign-in the user with the credential
+        return auth().signInWithCredential(facebookCredential);
+    }
+
     //controlando estado
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -48,7 +71,6 @@ export default function Register(){
         console.log(regex.test(email)) 
         
     }
-
 
     function handleRegister(){
         if(!email || !password){
@@ -106,6 +128,7 @@ export default function Register(){
             largura={230}
             corBotao={'#3b5998'}
             corTexto={'white'}
+            onPress={onFacebookButtonPress}
             />
         </View>
 
