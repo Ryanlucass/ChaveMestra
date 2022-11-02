@@ -5,9 +5,11 @@ import {useNavigation} from '@react-navigation/native'
 
 import auth from '@react-native-firebase/auth'
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 
 import Logo from '../components/Logo'
 import Botao from '../components/Botao';
+import Botaof from '../components/Botao-f'
 
 export default function Register(){
 
@@ -26,6 +28,28 @@ export default function Register(){
         
             // Sign-in the user with the credential
             return auth().signInWithCredential(googleCredential);
+    }
+
+    async function onFacebookButtonPress() {
+        // Attempt login with permissions
+        const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+
+        if (result.isCancelled) {
+            throw 'User cancelled the login process';
+        }
+
+        // Once signed in, get the users AccesToken
+        const data = await AccessToken.getCurrentAccessToken();
+
+        if (!data) {
+            throw 'Something went wrong obtaining access token';
+        }
+
+        // Create a Firebase credential with the AccessToken
+        const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
+
+        // Sign-in the user with the credential
+        return auth().signInWithCredential(facebookCredential);
     }
 
     //controlando estado
@@ -47,7 +71,6 @@ export default function Register(){
         console.log(regex.test(email)) 
         
     }
-
 
     function handleRegister(){
         if(!email || !password){
@@ -98,7 +121,18 @@ export default function Register(){
 
         </SafeAreaView>
 
-        <View style={style.botaGoogle}>
+        <View style={style.botaoFacebook}>
+            <Botaof
+            texto={'Continue with facebook'}
+            img={true}
+            largura={230}
+            corBotao={'#3b5998'}
+            corTexto={'white'}
+            onPress={onFacebookButtonPress}
+            />
+        </View>
+
+        <View style={style.botaoGoogle}>
             <Botao
             texto={'Continue with google'}
             img={true}
@@ -107,7 +141,7 @@ export default function Register(){
             corTexto={'black'}
             onPress={onGoogleButtonPress}
             />
-        </View>    
+        </View>
 
         <View style={{
             margin:-120
@@ -156,9 +190,13 @@ const style = StyleSheet.create({
         borderRadius: 6,
         fontFamily:'RobotoRegular'
     },
-    botaGoogle:{
-        margin:114,
+    botaoFacebook:{
+        margin:54,
         marginTop:109
+    },
+    botaoGoogle:{
+        margin:-44,
+        marginTop:59
     },
     logoGoogle:{
         margin: 60,
