@@ -9,7 +9,10 @@ import Logo from '../components/Logo';
 import Botao from '../components/Botao';
 
 export default function Login(){
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
+    
     function handlesing(){
         if(!email || !password){
             return Alert.alert("Email ou senhas vazios");
@@ -38,11 +41,6 @@ export default function Login(){
         });
 
     }
-
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-
 
     return(
         <View style={Estilo.body}>

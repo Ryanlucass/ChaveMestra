@@ -9,67 +9,42 @@ import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 
 import Logo from '../components/Logo'
 import Botao from '../components/Botao';
-import Botaof from '../components/Botao-f'
+import Botaof from '../components/Botaoface'
 
 export default function Register(){
+
+    const navigation = useNavigation();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
 
     GoogleSignin.configure({
         webClientId: '458516419713-7uja23cloun54m8nhm2nbgf1edfib3k1.apps.googleusercontent.com',
     });
     
     async function onGoogleButtonPress() {
-            // Check if your device supports Google Play
             await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-            // Get the users ID token
             const { idToken } = await GoogleSignin.signIn();
-        
-            // Create a Google credential with the token
             const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-        
-            // Sign-in the user with the credential
             return auth().signInWithCredential(googleCredential);
     }
 
     async function onFacebookButtonPress() {
-        // Attempt login with permissions
         const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
-
         if (result.isCancelled) {
             throw 'User cancelled the login process';
         }
 
-        // Once signed in, get the users AccesToken
         const data = await AccessToken.getCurrentAccessToken();
-
         if (!data) {
             throw 'Something went wrong obtaining access token';
         }
-
-        // Create a Firebase credential with the AccessToken
         const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
-
-        // Sign-in the user with the credential
         return auth().signInWithCredential(facebookCredential);
     }
 
-    //controlando estado
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-
-    const navigation = useNavigation();
-
-    //decorrência do clickr
     function handleNewOrder(){
         navigation.navigate('Login');
-    }
-
-    function validarEmail(email){
-        
-        console.log(email);
-        const regex =(/\S+@\S+\.\S+/);
-        console.log(regex.test(email)) 
-        
     }
 
     function handleRegister(){
@@ -103,23 +78,23 @@ export default function Register(){
         <View style={style.body}>
             <Logo/>
 
-        <SafeAreaView style={style.container}>
-            <TextInput 
-            style={style.inputs}
-            onChangeText={setEmail}
-            keyboardType='email-address'
-            placeholder='Digite o email'
-            />
-        
+            <SafeAreaView style={style.container}>
+                <TextInput 
+                style={style.inputs}
+                onChangeText={setEmail}
+                keyboardType='email-address'
+                placeholder='Digite o email'
+                />
+            
 
-            <TextInput 
-            style={style.inputs}
-            onChangeText={setPassword}
-            secureTextEntry={true}
-            placeholder='Digite sua senha'
-            />
+                <TextInput 
+                style={style.inputs}
+                onChangeText={setPassword}
+                secureTextEntry={true}
+                placeholder='Digite sua senha'
+                />
 
-        </SafeAreaView>
+            </SafeAreaView>
 
         <View style={style.botaoFacebook}>
             <Botaof
@@ -143,8 +118,9 @@ export default function Register(){
             />
         </View>
 
+
         <View style={{
-            margin:-120
+            margin:150
         }}>
             <Botao
             texto={'Cadastrar'}
@@ -156,8 +132,7 @@ export default function Register(){
         </View>
 
         <View style={{
-            margin:120,
-            marginTop:110
+            margin:-160,
         }}>
             <Botao
             texto={'Já possui cadastro ? Clique aqui para logar'}
@@ -195,12 +170,7 @@ const style = StyleSheet.create({
         marginTop:109
     },
     botaoGoogle:{
-        margin:-44,
-        marginTop:59
-    },
-    logoGoogle:{
-        margin: 60,
-        width:100,
-        height:100
+        margin:-66,
+        marginBottom: -156
     }
 })
