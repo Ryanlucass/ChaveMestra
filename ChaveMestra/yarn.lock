@@ -6145,12 +6145,7 @@
   "integrity" "sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw=="
   "resolved" "https://registry.npmjs.org/mkdirp/-/mkdirp-1.0.4.tgz"
   "version" "1.0.4"
-
-"mkdirp@~0.3.5":
-  "integrity" "sha512-8OCq0De/h9ZxseqzCH8Kw/Filf5pF/vMI6+BH7Lu0jXz2pqYCjTAQRolSxRIi+Ax+oCCjlxoJMP0YQ4XlrQNHg=="
-  "resolved" "https://registry.npmjs.org/mkdirp/-/mkdirp-0.3.5.tgz"
-  "version" "0.3.5"
-
+  
 "moment@^2.24.0":
   "integrity" "sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w=="
   "resolved" "https://registry.npmjs.org/moment/-/moment-2.29.4.tgz"
@@ -6210,11 +6205,10 @@
     "regex-not" "^1.0.0"
     "snapdragon" "^0.8.1"
     "to-regex" "^3.0.1"
-
-"native-base@^3.4.19":
-  "integrity" "sha512-J5WniznFmeBcCLoqIbJBoPel9ueBi8/MuMeVryw/L42EWbWGUoj/J0KV2+Z0A5Bc1wcxhGWswdF6wRqg10x/uQ=="
-  "resolved" "https://registry.npmjs.org/native-base/-/native-base-3.4.19.tgz"
-  "version" "3.4.19"
+"native-base@^3.4.20":
+  "integrity" "sha512-0KP509NVGQTGWte9IFMs5vi3IPDG5O+oJsun/51wJeQMVYWVqmTFPcuB1vOd70yalWlPXb+HM4muoJbFYQlS6A=="
+  "resolved" "https://registry.npmjs.org/native-base/-/native-base-3.4.20.tgz"
+  "version" "3.4.20"
   dependencies:
     "@react-aria/focus" "3.2.3"
     "@react-aria/utils" "^3.6.0"
