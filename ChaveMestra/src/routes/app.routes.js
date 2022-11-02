@@ -9,9 +9,9 @@ const Stack = createNativeStackNavigator();
 export function AppRoutes(){
     return(
         <Stack.Navigator screenOptions={{headerShown: false}}>
+            <Stack.Screen name='Agendamento' component={Agendamento}/> 
             <Stack.Screen name='Veiculos' component={Veiculos}/>
             <Stack.Screen name='Services' component={Services}/>
-            <Stack.Screen name='Agendamento' component={Agendamento}/>
         </Stack.Navigator>
     )
 }

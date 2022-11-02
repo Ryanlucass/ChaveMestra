@@ -1,14 +1,13 @@
 import {Text, View, TouchableOpacity, StyleSheet,Image} from 'react-native';
-import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import React from "react";
 
 
 import Logo from '../components/Logo'
 import Veiculos from './Veiculos';
+import { StatusBar } from 'expo-status-bar';
 
 
-export default function Agendamento(){
-
+export default function Agendamento(jsonAgendamento){
     return(
         <View style={{
             height:'100%',
@@ -17,25 +16,25 @@ export default function Agendamento(){
             alignItems:'center',
             justifyContent:'flex-start'
         }}>
-
-            <View style={{
-                borderColor:'#fff',
-                backgroundColor:'red',
-                padding: 12
-            }}>  
-                <Text>
-                    Testando
-                </Text>
+        <StatusBar
+        hidden={true}
+        />
+            {/* Agendamento */}
+            <View style={style.Agendamento}>
+                
             </View>
 
-
-            <View style={{
-                marginTop:300
-            }}>
-                <Calendar/>
-            </View>
 
         </View>
     )
-
 }
+
+const style = StyleSheet.create({
+    Agendamento:{
+        margin: 170,
+        backgroundColor:'white',
+        borderRadius: 9,
+        width:'100%',
+        height:'100%'    
+    }
+})
