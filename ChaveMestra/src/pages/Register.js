@@ -8,6 +8,7 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 import Logo from '../components/Logo'
 import Botao from '../components/Botao';
+import Botaof from '../components/Botao-f'
 
 export default function Register(){
 
@@ -98,7 +99,17 @@ export default function Register(){
 
         </SafeAreaView>
 
-        <View style={style.botaGoogle}>
+        <View style={style.botaoFacebook}>
+            <Botaof
+            texto={'Continue with facebook'}
+            img={true}
+            largura={230}
+            corBotao={'#3b5998'}
+            corTexto={'white'}
+            />
+        </View>
+
+        <View style={style.botaoGoogle}>
             <Botao
             texto={'Continue with google'}
             img={true}
@@ -107,7 +118,7 @@ export default function Register(){
             corTexto={'black'}
             onPress={onGoogleButtonPress}
             />
-        </View>    
+        </View>
 
         <View style={{
             margin:-120
@@ -156,9 +167,13 @@ const style = StyleSheet.create({
         borderRadius: 6,
         fontFamily:'RobotoRegular'
     },
-    botaGoogle:{
-        margin:114,
+    botaoFacebook:{
+        margin:54,
         marginTop:109
+    },
+    botaoGoogle:{
+        margin:-44,
+        marginTop:59
     },
     logoGoogle:{
         margin: 60,
