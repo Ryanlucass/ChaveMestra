@@ -1,5 +1,6 @@
 import React from "react";
 import {Text, View, TouchableOpacity, StyleSheet,Image} from 'react-native';
+import {useNavigation} from '@react-navigation/native'
 
 import Logo from '../components/Logo'
 
@@ -8,6 +9,13 @@ import { AntDesign, Entypo, FontAwesome, FontAwesome5, MaterialCommunityIcons} f
 
 
 export default function Services(){
+
+    const navigation = useNavigation();
+    const handleAgendamento = () =>{
+        navigation.navigate('Agendamento');
+    }
+
+
     return(
         <View style={{
             height:'100%',
@@ -48,6 +56,7 @@ export default function Services(){
                 </TouchableOpacity>
 
                 <TouchableOpacity
+                onPress={handleAgendamento}
                 style={styles.services}>
                     <Text style={styles.title_botton}>
                     <FontAwesome 
