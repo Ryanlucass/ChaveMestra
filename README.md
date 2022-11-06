@@ -41,7 +41,7 @@
 | Cadastro de usuário                                        | ✔   |
 | Login Firebase                                             | ✔   |
 | Notificações                                               | ❌  |
-| Agendamento                                                | ❌  |
+| Agendamento                                                | ✔   |
 | Login Google                                               | ✔   |
 | Mapa             
 
