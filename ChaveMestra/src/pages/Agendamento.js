@@ -1,23 +1,61 @@
-import {Text, View, TouchableOpacity, StyleSheet,Image} from 'react-native';
+import {Text, View, TouchableOpacity, StyleSheet,Image, Button, Alert, ListViewBase} from 'react-native';
 import React, { useCallback, useEffect, useState } from "react";
 import { AntDesign, Entypo, FontAwesome, FontAwesome5, MaterialCommunityIcons} from '@expo/vector-icons'; 
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
-import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+import DatePicker from 'react-native-date-picker'
 
 
-
-import Logo from '../components/Logo'
-import Veiculos from './Veiculos';
 import { StatusBar } from 'expo-status-bar';
-import Botao from '../components/Botao';
 
 export default function Agendamento(){
 
     const [data, setData] = useState([]);
     const [usuario, setUsuario] = useState([]);
-    const [usuarioId, setUsuarioId] = useState('');
+    const [usuarioUid, setUsuarioUid] = useState('');
 
+    //datepicker
+    const [date, setDate] = useState(new Date)
+    const [open, setOpen] = useState()
+    const [marcada, setMarcada] = useState(false);
+
+    function dateFormat(data) {
+        if(data){
+            const date = new Date(data);
+    
+            const day = date.toLocaleDateString('pt-br');
+            const hour = date.toLocaleTimeString('pt-BR');
+    
+            return `${day}${hour}`;
+        }
+    }
+
+    
+    function verificaData(date, marcada){
+        marcada = false;
+        var dataSelecionada = date.toLocaleDateString('pt-br')
+        data.forEach(x=> {
+            if(dataSelecionada == x){
+                marcada = true;
+                firestore()
+                .collection('Usuarios')
+                .doc(usuarioUid)
+                .set({Datas:[x]})
+                .catch((error => {
+                    Alert.alert("Erro ao salvar no banco de dados");
+                }))
+
+            }
+        });
+        if(marcada == true){
+            Alert.alert("Seu serviço foi marcado com sucesso");
+        }
+        if(marcada == false){
+            data.forEach(x=>{
+                Alert.alert(`Não foi marcado, datas disponíveis:${x}` );
+            })
+        }
+    }
 
     const getUsers = () => {
         firestore()
@@ -25,21 +63,34 @@ export default function Agendamento(){
         .get()
         .then(function(querySnapshot){
             querySnapshot.forEach(x=>{
-                console.log(x.id, ' => ', x.data());
                 setUsuario(x.data().nome)
             })
         });
     }
 
+    const getDates = () => {
+        firestore()
+        .collection('Dates')
+        .get()
+        .then(function(item){
+            item.forEach(x=> {
+                setData(x.data().Datas);
+            });
+        });
+    };
+
+
     useEffect(()=>{
+
         const subscriber = auth()
         .onAuthStateChanged(response => {
-            setUsuarioId(response.uid);
+            setUsuarioUid(response.uid);
+            //console.log(usuarioUid)'
         });
 
         getUsers();
+        getDates();
     }, [])
-
 
     return(
         <View style={{
@@ -89,29 +140,27 @@ export default function Agendamento(){
             </View>
 
             <View style={style.Agendamento}>
-            <View style={{
-                        marginTop:10,
-                        height:20,
-                        width:350,
-                        marginLeft:30
-                        }}>
-                <Calendar
-                //initialDate={'2022-11-04'}
-                minDate={'2022-11-01'}
-                maxDate={'2022-11-30'}
-                // onDayPress={day => {
-                //     console.log('selected day', day);
-                // }}
-                markedDates={{
-                    // '2022-11-01': {selected: true, selectedColor: 'blue'},
-                    // '2022-11-02': {marked: true},
-                    // '2022-11-03': {marked: true, dotColor: 'red', activeOpacity: 0},
-                    // '2022-11-04': {disabled: true, disableTouchEvent: true}
-                }}
-                /> 
-            </View>
-                {/* <View style={style.Horario}>
-                </View> */}
+                <Button title='Calendario' onPress={() => setOpen(true)}/>
+                <DatePicker
+                    modal
+                    minimumDate={new Date("2022-11-01")}
+                    //timeZoneOffsetInMinutes
+                    minuteInterval={30}
+                    mode='date'
+                    open={open}
+                    date={date}
+                    onConfirm={(date) =>{
+                        verificaData(date, marcada);
+                        setOpen(false)
+                        setDate(date)
+                        //console.log(date);
+                    }}
+                    onCancel={() =>{
+                        setOpen(false)
+                    }}
+                />
+
+
             </View>
 
         </View>
