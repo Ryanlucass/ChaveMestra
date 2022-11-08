@@ -89,7 +89,8 @@ Depois disso basta abrir o seu emulador de android e rodar o seguinte código na
 
 > vai demorar um pouco até que ele configure o projeto por inteiro, mas depois é só sucesso ! 
 
-### Links de referência 
+### Material de apoio
+ 
 
 - [React-Native](https://reactnative.dev/docs/getting-started) Como iniciar no react native 
 - [Expo](https://docs.expo.dev/get-started/create-a-new-app/) Iniciando projetos facilmente com Expo
