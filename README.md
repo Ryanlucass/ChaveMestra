@@ -90,8 +90,7 @@ Depois disso basta abrir o seu emulador de android e rodar o seguinte código na
 > vai demorar um pouco até que ele configure o projeto por inteiro, mas depois é só sucesso ! 
 
 ### Material de apoio
- 
-
+- [Consultas firebase](https://github.com/firebase/snippets-node/blob/ea3747eee572d3e1bebd1cdafda9fa34a6dc38f0/firestore/main/index.js#L157-L164) Consultas com firebase
 - [React-Native](https://reactnative.dev/docs/getting-started) Como iniciar no react native 
 - [Expo](https://docs.expo.dev/get-started/create-a-new-app/) Iniciando projetos facilmente com Expo
 - [Firebase](https://firebase.google.com/docs?) soluções rápidas sem backend para sua aplicação 
