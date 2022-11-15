@@ -8,7 +8,9 @@ import DatePicker from 'react-native-date-picker'
 
 import { StatusBar } from 'expo-status-bar';
 
-export default function Agendamento(){
+export default function Agendamento(routes){
+    console.log(routes.route.params.icon);
+
 
     const [data, setData] = useState([]);
     const [usuario, setUsuario] = useState([]);
@@ -84,8 +86,7 @@ export default function Agendamento(){
 
         const subscriber = auth()
         .onAuthStateChanged(response => {
-            setUsuarioUid(response.uid);
-            //console.log(usuarioUid)'
+            setUsuarioUid(response.uid);            
         });
 
         getUsers();
@@ -109,7 +110,7 @@ export default function Agendamento(){
                 paddingRight:280
             }}>
                 <FontAwesome 
-                    name="car" 
+                    name={routes.route.params.icon} 
                     size={70} 
                     color="black"
                     />
@@ -130,13 +131,13 @@ export default function Agendamento(){
                     marginTop:20,
                     fontSize:20,
                     fontFamily:'RobotoBold'}}
-            >R$ 100.98</Text> }
+            >R$ {routes.route.params.preco}</Text> }
 
             <View style={style.descricao}> 
                 {/* Texto do serviço */}
-                <Text style={style.textoh1}>Funilaria</Text>
+                <Text style={style.textoh1}>{routes.route.params.nome}</Text>
                 {/* descrição do serviço */}
-                <Text style={style.textoDescricao}> Reparo nas parte da carroceria dos automóveis</Text>
+                <Text style={style.textoDescricao}> {routes.route.params.descricao}</Text>
             </View>
 
             <View style={style.Agendamento}>

@@ -1,21 +1,22 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {Text, View, TouchableOpacity, StyleSheet,Image, Alert} from 'react-native';
 import auth from '@react-native-firebase/auth'
 
 
+import Services from '../pages/Services';
 import Botao from "../components/Botao";
 import Logo from '../components/Logo'
 import {useNavigation} from '@react-navigation/native'
 
 // icon
-import { AntDesign, FontAwesome5, MaterialCommunityIcons} from '@expo/vector-icons'; 
+import {FontAwesome5} from '@expo/vector-icons'; 
 
 
 export default function Veiculos(){
     const navigation = useNavigation();
 
-    function handleServices(){
-        navigation.navigate('Services');
+    function handleServices(nomeVeiculo){
+        navigation.navigate('Services', nomeVeiculo);
     }
 
     function handleLogout(){
@@ -46,12 +47,14 @@ export default function Veiculos(){
             }}>
 
                 <TouchableOpacity
-                onPress={handleServices}
+                onPress={() => {
+                    handleServices("car");
+                }}
                 style={styles.services}>
                     <Text style={{
                         display:'flex'
                     }}>
-                            <AntDesign 
+                            <FontAwesome5 
                             name="car" size={25} 
                             color="white"/>
                     </Text>
@@ -59,7 +62,9 @@ export default function Veiculos(){
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                onPress={handleServices}
+                onPress={() => {
+                    handleServices("truck");
+                }}
                 style={styles.services}>
                     <Text style={styles.title_botton}>
                     <FontAwesome5 
@@ -70,7 +75,9 @@ export default function Veiculos(){
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                onPress={handleServices}
+                onPress={() => {
+                    handleServices("bus-alt");
+                }}
                 style={styles.services}>
                     <Text style={styles.title_botton}>
                         <FontAwesome5 
@@ -81,7 +88,9 @@ export default function Veiculos(){
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                onPress={handleServices}
+                onPress={() => {
+                    handleServices("motorcycle");
+                }}
                 style={styles.services}>
                     <Text style={styles.title_botton}>
                     <FontAwesome5 
