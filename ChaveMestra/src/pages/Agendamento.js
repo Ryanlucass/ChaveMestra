@@ -1,6 +1,6 @@
 import {Text, View, TouchableOpacity, StyleSheet,Image, Button, Alert, ListViewBase} from 'react-native';
 import React, { useCallback, useEffect, useState } from "react";
-import { AntDesign, Entypo, FontAwesome, FontAwesome5, MaterialCommunityIcons} from '@expo/vector-icons'; 
+import {FontAwesome5} from '@expo/vector-icons'; 
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import DatePicker from 'react-native-date-picker'
@@ -9,31 +9,40 @@ import DatePicker from 'react-native-date-picker'
 import { StatusBar } from 'expo-status-bar';
 
 export default function Agendamento(routes){
-    console.log(routes.route.params.icon);
-
 
     const [data, setData] = useState([]);
-    const [usuario, setUsuario] = useState([]);
+    const [usuario, setUsuario] = useState('Carregando...');
     const [usuarioUid, setUsuarioUid] = useState('');
+    const [getObjUsers, setObjUsers] = useState();
 
     //datepicker
     const [date, setDate] = useState(new Date)
     const [open, setOpen] = useState()
     const [marcada, setMarcada] = useState(false);
 
+
+    async function getObject(){
+        const ObjetUsu = await firestore()
+        .collection('Usuarios')
+        .doc(usuarioUid).get()
+
+        const objectDoc = ObjetUsu.data();
+        setObjUsers(objectDoc);
+        setUsuario(objectDoc.Nome);
+    }
+
     function dateFormat(data) {
         if(data){
             const date = new Date(data);
-    
             const day = date.toLocaleDateString('pt-br');
             const hour = date.toLocaleTimeString('pt-BR');
-    
             return `${day}${hour}`;
         }
     }
 
     
     function verificaData(date, marcada){
+        getObject();
         marcada = false;
         var dataSelecionada = date.toLocaleDateString('pt-br')
         data.forEach(x=> {
@@ -42,32 +51,23 @@ export default function Agendamento(routes){
                 firestore()
                 .collection('Usuarios')
                 .doc(usuarioUid)
-                .set({Datas:[x]})
+                .set({Datas:[x],
+                    Nome:getObjUsers.Nome,
+                    Email:getObjUsers.Email
+                })
                 .catch((error => {
                     Alert.alert("Erro ao salvar no banco de dados");
                 }))
-
             }
         });
         if(marcada == true){
-            Alert.alert("Seu serviço foi marcado com sucesso");
+                Alert.alert("Seu serviço foi marcado com sucesso");
         }
         if(marcada == false){
             data.forEach(x=>{
                 Alert.alert(`Não foi marcado, datas disponíveis:${x}` );
             })
         }
-    }
-
-    const getUsers = () => {
-        firestore()
-        .collection('Usuarios')
-        .get()
-        .then(function(querySnapshot){
-            querySnapshot.forEach(x=>{
-                setUsuario(x.data().nome)
-            })
-        });
     }
 
     const getDates = () => {
@@ -86,11 +86,12 @@ export default function Agendamento(routes){
 
         const subscriber = auth()
         .onAuthStateChanged(response => {
-            setUsuarioUid(response.uid);            
+            if(response != null){
+                setUsuarioUid(response.uid);            
+            }
+            getObject();
+            getDates();
         });
-
-        getUsers();
-        getDates();
     }, [])
 
     return(
@@ -109,7 +110,7 @@ export default function Agendamento(routes){
                 marginTop:80,
                 paddingRight:280
             }}>
-                <FontAwesome 
+                <FontAwesome5 
                     name={routes.route.params.icon} 
                     size={70} 
                     color="black"
@@ -154,7 +155,6 @@ export default function Agendamento(routes){
                         verificaData(date, marcada);
                         setOpen(false)
                         setDate(date)
-                        //console.log(date);
                     }}
                     onCancel={() =>{
                         setOpen(false)

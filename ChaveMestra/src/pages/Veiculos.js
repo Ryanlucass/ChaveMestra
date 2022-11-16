@@ -1,16 +1,14 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import {Text, View, TouchableOpacity, StyleSheet,Image, Alert} from 'react-native';
 import auth from '@react-native-firebase/auth'
-
-
-import Services from '../pages/Services';
-import Botao from "../components/Botao";
-import Logo from '../components/Logo'
+import firestore from '@react-native-firebase/firestore';
 import {useNavigation} from '@react-navigation/native'
 
-// icon
-import {FontAwesome5} from '@expo/vector-icons'; 
 
+import Botao from "../components/Botao";
+import Logo from '../components/Logo'
+
+import {FontAwesome5} from '@expo/vector-icons'; 
 
 export default function Veiculos(){
     const navigation = useNavigation();
@@ -27,7 +25,6 @@ export default function Veiculos(){
             return Alert.alert("não foi possível sair");
         });
     }
-
 
     return(
         <View style={{

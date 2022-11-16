@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { SafeAreaView, Text, View, StyleSheet, TextInput, Button, Alert, Image} from 'react-native';
-import {TextInputMask} from 'react-native-masked-text'
+import { SafeAreaView, View, StyleSheet, TextInput, Alert} from 'react-native';
 import {useNavigation} from '@react-navigation/native'
 
+// firebase
 import auth from '@react-native-firebase/auth'
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
+import firestore from '@react-native-firebase/firestore';
 
+// componentes
 import Logo from '../components/Logo'
 import Botao from '../components/Botao';
 import Botaof from '../components/Botaoface'
@@ -42,11 +44,8 @@ export default function Register(){
         const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
         return auth().signInWithCredential(facebookCredential);
     }
-
-    function handleNewOrder(){
-        navigation.navigate('Login');
-    }
-
+    
+    
     function handleRegister(){
         if(!email || !password){
             return Alert.alert("Email ou senhas vazios");
@@ -55,7 +54,21 @@ export default function Register(){
         auth()
         .createUserWithEmailAndPassword(email, password)
         .then((Response =>{
-            navigation.navigate('Login')
+            navigation.navigate('Login');
+            const nome = email.split('@');
+            const userUid = Response.user.uid ?? '';
+            console.log(`Nome: ${nome} e UserUid: ${userUid}`)
+            firestore()
+            .collection('Usuarios')
+            .doc(userUid)
+            .set({
+                Email: email,
+                Nome: nome[0]
+            })
+            .catch((error =>[
+                Alert.alert("Erro ao Salvar no banco de dados {Register}")
+            ]))
+            
         }))
         .catch((error => {
             switch(error.code){
@@ -68,10 +81,12 @@ export default function Register(){
                 break;
             }
         }))
-
-
-
     }
+
+    function handleLogin(){
+        navigation.navigate('Login');
+    }
+
 
 
     return(
@@ -136,7 +151,7 @@ export default function Register(){
         }}>
             <Botao
             texto={'Já possui cadastro ? Clique aqui para logar'}
-            onPress={handleNewOrder}
+            onPress={handleLogin}
             />
         </View>
 
