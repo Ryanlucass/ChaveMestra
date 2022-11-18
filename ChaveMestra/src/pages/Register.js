@@ -28,7 +28,21 @@ export default function Register(){
             await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
             const { idToken } = await GoogleSignin.signIn();
             const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-            return auth().signInWithCredential(googleCredential);
+            return auth().signInWithCredential(googleCredential)
+            .then((Response =>{
+                const nome = Response.user.displayName;
+                const email = Response.user.email;
+                const uid = Response.user.uid;
+                console.log(`nome:${nome} email:${email} uid;${uid}`)
+
+                firestore()
+                .collection('Usuarios')
+                .doc(uid)
+                .set({
+                    Email: email,
+                    Nome: nome
+                });
+            }))
     }
 
     async function onFacebookButtonPress() {
@@ -42,7 +56,19 @@ export default function Register(){
             throw 'Something went wrong obtaining access token';
         }
         const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
-        return auth().signInWithCredential(facebookCredential);
+        return auth().signInWithCredential(facebookCredential).
+        then((Response =>{
+            const nome = Response.user.displayName;
+            const email = Response.user.email;
+            const uid = Response.user.uid;
+            firestore()
+            .collection('Usuarios')
+            .doc(uid)
+            .set({
+                Email: email,
+                Nome: nome
+            });
+        }));
     }
     
     

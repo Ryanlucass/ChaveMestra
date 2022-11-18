@@ -1,5 +1,5 @@
-import {Text, View, TouchableOpacity, StyleSheet,Image, Button, Alert, ListViewBase} from 'react-native';
-import React, { useCallback, useEffect, useState } from "react";
+import {Text, View, TouchableOpacity, StyleSheet,Image, Button, Alert, ListViewBase, ActivityIndicator } from 'react-native';
+import React, {useEffect, useState } from "react";
 import {FontAwesome5} from '@expo/vector-icons'; 
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
@@ -11,9 +11,10 @@ import { StatusBar } from 'expo-status-bar';
 export default function Agendamento(routes){
 
     const [data, setData] = useState([]);
-    const [usuario, setUsuario] = useState('Carregando...');
+    const [loading, setLoading] = useState(true);
+    const [usuario, setUsuario] = useState('');
     const [usuarioUid, setUsuarioUid] = useState('');
-    const [getObjUsers, setObjUsers] = useState();
+    const [getObjUsers, setObjUsers] = useState({});
 
     //datepicker
     const [date, setDate] = useState(new Date)
@@ -91,10 +92,12 @@ export default function Agendamento(routes){
             }
             getObject();
             getDates();
+            setLoading(false);
+            console.log(loading);
         });
     }, [])
 
-    return(
+    return(  
         <View style={{
             height:'100%',
             width:'100%',
@@ -104,7 +107,6 @@ export default function Agendamento(routes){
         <StatusBar
         hidden={true}
         />
-
             <View style={{
                 position:'absolute',
                 marginTop:80,
@@ -132,7 +134,7 @@ export default function Agendamento(routes){
                     marginTop:20,
                     fontSize:20,
                     fontFamily:'RobotoBold'}}
-            >R$ {routes.route.params.preco}</Text> }
+            >R${routes.route.params.preco}</Text> }
 
             <View style={style.descricao}> 
                 {/* Texto do serviço */}
@@ -160,13 +162,11 @@ export default function Agendamento(routes){
                         setOpen(false)
                     }}
                 />
-
-
             </View>
-
         </View>
-    )
-}
+        )
+    }
+
 
 const style = StyleSheet.create({
     Agendamento:{
