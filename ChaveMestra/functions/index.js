@@ -3,7 +3,7 @@ const functions  = require('firebase-functions');
 const nodemailer = require('nodemailer');
 const cors = require('cors')({origin: true});
 
-let url = "smtps://<chavemestrax@gmail.com>:"+"juuerasuclzhvvgk" + "@smtp.gmail.com:465";
+let url = "smtps://chavemestrax@gmail.com:"+"juuerasuclzhvvgk" + "@smtp.gmail.com:465";
 let transporter = nodemailer.createTransport(url);
 
 exports.enviarEmail = functions.https.onRequest((req, res) => {

@@ -7,9 +7,9 @@ export default function App() {
 function sendMail() {
 
     body = {
-        "assunto": "",
-        "destinatarios": "",
-        "corpo": "",
+        "assunto": "Confirmação de Agendamento",
+        "destinatarios": "chavemestrax@gmail.com, vynnyx@ymail.com",
+        "corpo": "Texto de teste",
         "corpoHtml": ""
     }
     // a preferencia do que tá sendo enviado é o CorpoHTML
