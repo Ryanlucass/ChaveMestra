@@ -1,20 +1,22 @@
-import {Text, View, TouchableOpacity, StyleSheet,Image, Button, Alert, ListViewBase, ActivityIndicator } from 'react-native';
+import {Text, View, StyleSheet, Button, Alert,  ActivityIndicator} from 'react-native';
 import React, {useEffect, useState } from "react";
 import {FontAwesome5} from '@expo/vector-icons'; 
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import DatePicker from 'react-native-date-picker'
-
-
 import { StatusBar } from 'expo-status-bar';
+
+//component
+import Map from '../components/Map'
+import { PrivateValueStore } from '@react-navigation/native';
 
 export default function Agendamento(routes){
 
-    const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [data, setData] = useState([]);
     const [usuario, setUsuario] = useState('');
+    const [email, setEmail] = useState('');
     const [usuarioUid, setUsuarioUid] = useState('');
-    const [getObjUsers, setObjUsers] = useState({});
 
     //datepicker
     const [date, setDate] = useState(new Date)
@@ -22,14 +24,20 @@ export default function Agendamento(routes){
     const [marcada, setMarcada] = useState(false);
 
 
-    async function getObject(){
-        const ObjetUsu = await firestore()
+    async function listUsers(){
+        const users = await firestore()
         .collection('Usuarios')
         .doc(usuarioUid).get()
 
-        const objectDoc = ObjetUsu.data();
-        setObjUsers(objectDoc);
-        setUsuario(objectDoc.Nome);
+
+        setUsuario(users.data().Nome);
+        setEmail(users.data().Email);
+
+        console.log(marcada);
+    }
+
+    async function listOfficers(){
+        
     }
 
     function dateFormat(data) {
@@ -43,18 +51,19 @@ export default function Agendamento(routes){
 
     
     function verificaData(date, marcada){
-        getObject();
+        listUsers();
         marcada = false;
         var dataSelecionada = date.toLocaleDateString('pt-br')
         data.forEach(x=> {
             if(dataSelecionada == x){
+                setMarcada(true);
                 marcada = true;
                 firestore()
                 .collection('Usuarios')
                 .doc(usuarioUid)
                 .set({Datas:[x],
-                    Nome:getObjUsers.Nome,
-                    Email:getObjUsers.Email
+                    Nome:usuario,
+                    Email:email
                 })
                 .catch((error => {
                     Alert.alert("Erro ao salvar no banco de dados");
@@ -85,19 +94,19 @@ export default function Agendamento(routes){
 
     useEffect(()=>{
 
-        const subscriber = auth()
+        auth()
         .onAuthStateChanged(response => {
             if(response != null){
                 setUsuarioUid(response.uid);            
             }
-            getObject();
+            listUsers();
             getDates();
             setLoading(false);
-            console.log(loading);
         });
     }, [])
 
     return(  
+        loading == true ? <ActivityIndicator size="large" /> : 
         <View style={{
             height:'100%',
             width:'100%',
@@ -144,7 +153,7 @@ export default function Agendamento(routes){
             </View>
 
             <View style={style.Agendamento}>
-                <Button title='Calendario' onPress={() => setOpen(true)}/>
+                <Button title='Calendario' color={'black'} onPress={() => setOpen(true)}/>
                 <DatePicker
                     modal
                     minimumDate={new Date("2022-11-01")}
@@ -162,6 +171,16 @@ export default function Agendamento(routes){
                         setOpen(false)
                     }}
                 />
+                { 
+                    marcada == true?
+                    <View style={{margin:30}}>
+                        <Map/>
+                    </View> :
+                    <View>
+
+                    </View>
+                }
+
             </View>
         </View>
         )

@@ -2228,6 +2228,11 @@
     "prompts" "^2.4.0"
     "semver" "^6.3.0"
 
+"@react-native-community/geolocation@^3.0.3":
+  "integrity" "sha512-jNKI89cFgtWXW9aFLYw1KLnCUx1D+hu8rLJIwYzb6l35SuEN6uHk5A1+dx8fV8Kzcfk+GXGSZT+SIF0IkezSyg=="
+  "resolved" "https://registry.npmjs.org/@react-native-community/geolocation/-/geolocation-3.0.3.tgz"
+  "version" "3.0.3"
+
 "@react-native-firebase/app@^16.3.0", "@react-native-firebase/app@16.3.0":
   "integrity" "sha512-pMMRSmvtJ5/nAuiFloZrA6eks8R32v5MaPUZBxnkO+3/glf6p1YbBUaEybXIC0WPSdD57d6mvqH0caqf0LyqGw=="
   "resolved" "https://registry.npmjs.org/@react-native-firebase/app/-/app-16.3.0.tgz"
@@ -6316,19 +6321,11 @@
   "resolved" "https://registry.npmjs.org/node-stream-zip/-/node-stream-zip-1.15.0.tgz"
   "version" "1.15.0"
 
-<<<<<<< HEAD
 "nodemailer@^6.8.0":
   "integrity" "sha512-EjYvSmHzekz6VNkNd12aUqAco+bOkRe3Of5jVhltqKhEsjw/y0PYPJfp83+s9Wzh1dspYAkUW/YNQ350NATbSQ=="
   "resolved" "https://registry.npmjs.org/nodemailer/-/nodemailer-6.8.0.tgz"
   "version" "6.8.0"
 
-"normalize-css-color@^1.0.2":
-  "integrity" "sha512-jPJ/V7Cp1UytdidsPqviKEElFQJs22hUUgK5BOPHTwOonNCk7/2qOxhhqzEajmFrWJowADFfOFh1V+aWkRfy+w=="
-  "resolved" "https://registry.npmjs.org/normalize-css-color/-/normalize-css-color-1.0.2.tgz"
-  "version" "1.0.2"
-
-=======
->>>>>>> a930d85cb6dab3955371a7cbf608cd549220f136
 "normalize-path@^3.0.0":
   "integrity" "sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA=="
   "resolved" "https://registry.npmjs.org/normalize-path/-/normalize-path-3.0.0.tgz"
